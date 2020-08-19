@@ -5,7 +5,7 @@ canvas.width = 600;
 
 var gY = 600;
 var dist = 400;
-var gravity = 1.5;
+var gravity = 1.2;
 var a = 0, b = 0,i;
 var temp, min = gY;
 var frame = 0;
@@ -23,9 +23,9 @@ let bgSound;
 
 document.addEventListener('click', () => {
     bounceSound.play();
-    gY -= 29;
+    gY -= 55;
      obstacles.forEach(o => {
-            o.oY += 25;
+            o.oY += 18;
     });
     
 });
@@ -47,7 +47,7 @@ function updateGame(){
         }
     ctx.clearRect(0,0, canvas.width, canvas.height);
     showScore();
-    drawObstacle();
+    drawObstacles();
     drawGamePiece();
     aniFrame = requestAnimationFrame(updateGame);
     
@@ -86,7 +86,7 @@ function drawGamePiece(){
     gY += gravity;
 }
 
-function drawObstacle(){
+function drawObstacles(){
     if(!obstacles[0]) obstacles.push(new obstacle(300,red, blue));
 
     if (obstacles[(obstacles.length - 1)].oY > 300){
